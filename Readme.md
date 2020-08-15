@@ -1,1 +1,1 @@
-# GRPC Athentication in Laravel
+# GRPC Authentication in Laravel
