@@ -11,6 +11,6 @@
 */
 
 Route::prefix('v1')->group(function () {
-    Route::post('sign-in', 'Api\V1\Auth\RegisterController@signIn');
-    Route::post('sign-up', 'Api\V1\Auth\RegisterController@signUp');
+    Route::post('/sign-in', 'Api\V1\AuthController@signIn');
+    Route::post('/sign-up', 'Api\V1\AuthController@signUp');
 });

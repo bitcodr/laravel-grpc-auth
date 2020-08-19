@@ -73,6 +73,7 @@ class AuthController implements AuthServiceInterface
         $response = new Response();
 
         $response->setId($user->id);
+        //TODO using jwt to handle token base auth
         $response->setToken("token");
 
         return $response;
@@ -102,6 +103,7 @@ class AuthController implements AuthServiceInterface
         $response = new Response();
 
         $response->setId($user->id);
+        //TODO using jwt to handle token base auth
         $response->setToken("token");
 
         return $response;

@@ -24,28 +24,24 @@ class Kernel implements KernelContract
 {
     /**
      * The application implementation.
-     *
      * @var Application
      */
     protected Application $app;
 
     /**
      * Service invoker.
-     * 
      * @var ServiceInvoker
      */
     protected ServiceInvoker $invoker;
 
     /**
      * Controllers definintion.
-     * 
      * @var array
      */
     protected array $services = [];
 
     /**
      * The bootstrap classes for the application.
-     *
      * @var array
      */
     protected array $bootstrappers = [
@@ -60,7 +56,6 @@ class Kernel implements KernelContract
 
     /**
      * Create a new GRPC kernel instance.
-     *
      * @param Application $app
      * @param ServiceInvoker $invoker
      */
@@ -72,9 +67,7 @@ class Kernel implements KernelContract
 
     /**
      * Register available services.
-     *
      * @param string $interface
-     *
      * @return  self
      * @throws ReflectionException
      */
@@ -88,10 +81,8 @@ class Kernel implements KernelContract
 
      /**
      * Serve GRPC server.
-     * 
      * @var     Worker      $worker
      * @var     callable    $finalize
-     * 
      * @return  void
      */
     public function serve(Worker $worker, callable $finalize = null): void
@@ -129,7 +120,6 @@ class Kernel implements KernelContract
 
     /**
      * Bootstrap the application for HTTP requests.
-     *
      * @return void
      */
     public function bootstrap(): void
@@ -141,7 +131,6 @@ class Kernel implements KernelContract
 
     /**
      * Get the Laravel application instance.
-     *
      * @return Application
      */
     public function getApplication(): Application
@@ -151,13 +140,11 @@ class Kernel implements KernelContract
 
     /**
      * Invoke service method with binary payload and return the response.
-     *
      * @param string $service
      * @param string $method
      * @param array  $context
      * @param string $body
      * @return string
-     *
      * @throws GRPCException
      * @throws Throwable
      */
@@ -176,7 +163,6 @@ class Kernel implements KernelContract
 
     /**
      * Get the bootstrap classes for the application.
-     *
      * @return array
      */
     protected function bootstrappers()
@@ -186,11 +172,8 @@ class Kernel implements KernelContract
 
     /**
      * Packs exception message and code into one string.
-     *
      * Internal agreement:
-     *
      * Details will be sent as serialized google.protobuf.Any messages after code and exception message separated with |:| delimeter.
-     *
      * @param GRPCException $e
      * @return string
      */

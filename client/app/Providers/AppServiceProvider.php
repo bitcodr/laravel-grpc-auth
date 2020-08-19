@@ -1,11 +1,9 @@
-<?php
+<?php   namespace App\Providers;
 
-namespace App\Providers;
-
-use App\Services\Grpc\ConfigurableClientFactory;
-use App\Services\Grpc\Contracts\ClientFactory;
-use App\Services\Grpc\Contracts\ErrorHandler;
-use App\Services\Grpc\LaravelErrorHandler;
+use App\Grpc\ConfigurableClientFactory;
+use App\Grpc\Interfaces\ClientFactory;
+use App\Grpc\Interfaces\ErrorHandler;
+use App\Grpc\LaravelErrorHandler;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

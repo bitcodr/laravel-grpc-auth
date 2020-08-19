@@ -1,11 +1,6 @@
-<?php
+<?php   namespace App\Providers;
 
-namespace App\Providers;
 
-use App\Grpc\Interfaces\ClientFactory;
-use App\Grpc\Interfaces\ErrorHandler;
-use App\Grpc\GrpcUserProvider;
-use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\Passport;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -30,12 +25,5 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Passport::routes();
-
-        Auth::provider('grpc', function ($app, array $config) {
-            $clientFactory = $app->make(ClientFactory::class);
-            $errorHandler = $app->make(ErrorHandler::class);
-
-            return new GrpcUserProvider($clientFactory, $errorHandler);
-        });
     }
 }

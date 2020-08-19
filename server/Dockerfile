@@ -6,7 +6,7 @@ COPY . .
 
 RUN composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --no-suggest --optimize-autoloader
 
-FROM golang:1.15-alpine as golang
+FROM golang:1.13-alpine as golang
 
 RUN apk --update --no-cache add bash
 
@@ -19,7 +19,7 @@ COPY --from=vendor /app .
 RUN bash vendor/spiral/php-grpc/build.sh build Linux linux amd64
 RUN bash vendor/spiral/php-grpc/build.sh build_protoc Linux linux amd64
 
-RUN protoc --plugin=/usr/bin/protoc-gen-php-grpc --php_out=./protocolBuffer/auth/compiled --php-grpc_out=./protocolBuffer/auth/compiled protocolBuffer/**/*.proto
+RUN protoc --plugin=./vendor/spiral/php-grpc/protoc-gen-php-grpc --php_out=./protocolBuffer/auth/compiled --php-grpc_out=./protocolBuffer/auth/compiled protocolBuffer/**/*.proto
 
 FROM php:7.4-zts-alpine
 
@@ -33,6 +33,6 @@ COPY --from=golang /app .
 
 RUN apk del .build-deps
 
-EXPOSE 8000
+EXPOSE 3000
 
 CMD ["vendor/spiral/php-grpc/rr-grpc", "serve", "-v", "-d"]

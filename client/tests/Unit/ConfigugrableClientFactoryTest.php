@@ -2,27 +2,29 @@
 
 namespace Tests\Unit;
 
-use App\Services\Grpc\ConfigurableClientFactory;
+use App\Grpc\ConfigurableClientFactory;
+use Illuminate\Contracts\Config\Repository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Mockery\MockInterface;
 use Tests\TestCase;
 
 class ConfigugrableClientFactoryTest extends TestCase
 {
-    /** @var \Mockery\MockInterface|\Illuminate\Contracts\Config\Repository */
+    /** @var MockInterface|Repository */
     protected $config;
 
     public function setUp(): void
     {
         parent::setUp();
 
-        $this->config = $this->mock(\Illuminate\Contracts\Config\Repository::class);
+        $this->config = $this->mock(Repository::class);
     }
 
     public function testItIaAConfigRepository()
     {
         $configurableClientRepository = new ConfigurableClientFactory($this->config);
-        
+
         $this->assertTrue($configurableClientRepository instanceof \App\Services\Grpc\Contracts\ClientFactory);
     }
 

@@ -12,14 +12,12 @@ class LaravelValidator implements Validator
 {
     /**
      * Validator factory
-     * 
      * @param Factory
      */
     protected Factory $validatorFactory;
 
     /**
      * Create new instance/
-     * 
      * @param Factory $validatorFactory
      */
     public function __construct(Factory $validatorFactory)
@@ -29,12 +27,9 @@ class LaravelValidator implements Validator
 
     /**
      * Validate data.
-     * 
      * @param   array   $data
      * @param   array   $rules
-     * 
      * @return  void
-     * 
      * @throws  Throwable
      */
     public function validate(array $data, array $rules): void
@@ -61,9 +56,7 @@ class LaravelValidator implements Validator
 
     /**
      * Adjust data
-     * 
      * @param   array   $data
-     * 
      * @return  array
      */
     protected function adjustData(array $data)

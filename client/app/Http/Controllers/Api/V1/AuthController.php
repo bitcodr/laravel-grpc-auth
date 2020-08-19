@@ -1,12 +1,12 @@
 <?php   namespace App\Http\Controllers\Api\V1;
 
-use App\Grpc\Interfaces\ClientFactory;
-use App\Grpc\Interfaces\ErrorHandler;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use ProtocolBuffer\Auth\AuthServiceInterface;
+use App\Http\Controllers\Controller;
+use App\Grpc\Interfaces\ErrorHandler;
+use App\Grpc\Interfaces\ClientFactory;
 use ProtocolBuffer\Auth\SignInRequest;
 use ProtocolBuffer\Auth\SignUpRequest;
+use ProtocolBuffer\Auth\AuthServiceInterface;
 
 class AuthController extends Controller
 {

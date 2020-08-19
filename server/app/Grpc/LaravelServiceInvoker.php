@@ -14,14 +14,12 @@ class LaravelServiceInvoker implements ServiceInvoker
 {
     /**
      * The application implementation.
-     *
      * @var Application
      */
     protected Application $app;
 
     /**
      * Create new Invoker instance
-     * 
      * @param   Application     $app
      */
     public function __construct(Application $app)
@@ -51,7 +49,6 @@ class LaravelServiceInvoker implements ServiceInvoker
 
     /**
      * Get the Laravel application instance.
-     *
      * @return Application
      */
     public function getApplication(): Application
@@ -63,7 +60,6 @@ class LaravelServiceInvoker implements ServiceInvoker
      * @param Method $method
      * @param string $body
      * @return Message
-     *
      * @throws InvokeException
      */
     private function makeInput(Method $method, ?string $body): Message

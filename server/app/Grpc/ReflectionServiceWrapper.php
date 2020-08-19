@@ -15,35 +15,30 @@ class ReflectionServiceWrapper implements ServiceWrapper
 {
     /**
      * Service name.
-     * 
      * @var     string
      */
     protected string $name;
 
     /**
      * Service's methods
-     * 
      * @var     array
      */
     protected array $methods = [];
 
     /**
      * Invoker.
-     * 
      * @var     ServiceInvoker
      */
     protected ServiceInvoker $invoker;
 
     /**
      * Fully qualified service interface.
-     * 
      * @var     string
      */
     protected string $interface;
 
     /**
      * Create new ServiceWrapper instance.
-     *
      * @param ServiceInvoker $invoker
      * @param string $interface
      * @throws ReflectionException
@@ -60,7 +55,6 @@ class ReflectionServiceWrapper implements ServiceWrapper
 
     /**
      * Retrive service name.
-     * 
      * @return  string
      */
     public function getName(): string
@@ -70,7 +64,6 @@ class ReflectionServiceWrapper implements ServiceWrapper
 
     /**
      * Retrieve public methods.
-     * 
      * @return  array
      */
     public function getMethods(): array
@@ -80,13 +73,10 @@ class ReflectionServiceWrapper implements ServiceWrapper
 
     /**
      * Invoke service.
-     *
      * @param string $method
      * @param ContextInterface $context
      * @param string $input
-     *
      * @return string
-     *
      */
     public function invoke(string $method, ContextInterface $context, ?string $input): string
     {
@@ -99,9 +89,7 @@ class ReflectionServiceWrapper implements ServiceWrapper
 
     /**
      * Configure service name and methods.
-     *
      * @param string $interface
-     *
      * @throws \Spiral\Grpc\Exception\ServiceException
      * @throws ReflectionException
      */
