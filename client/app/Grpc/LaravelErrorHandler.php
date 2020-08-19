@@ -1,22 +1,18 @@
-<?php
-
-namespace App\Services\Grpc;
+<?php   namespace App\Grpc;
 
 use Exception;
 use Google\Rpc\Status;
 use Illuminate\Support\Facades\Log;
 use GPBMetadata\Google\Rpc\ErrorDetails;
-use App\Services\Grpc\Contracts\ErrorHandler;
+use App\Grpc\Interfaces\ErrorHandler;
 use const Grpc\STATUS_OK;
 
 class LaravelErrorHandler implements ErrorHandler
 {
     /**
      * Handle grpc error
-     *
      * @param object $status
      * @param array|int $codeToSend
-     *
      * @return  mixed
      * @throws Exception
      */
@@ -55,9 +51,7 @@ class LaravelErrorHandler implements ErrorHandler
 
     /**
      * Convert grpc status code to http status code.
-     *
      * @param   int  $code
-     *
      * @return  int
      */
     protected function mapGrpcToHtppCode($code)

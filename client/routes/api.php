@@ -1,7 +1,4 @@
 <?php
-
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,5 +10,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('/v1/register', 'Api\V1\Auth\RegisterController@register');
-Route::get('/v1/info', 'Api\V1\Auth\InfoController@info')->middleware('auth:api');
+Route::prefix('v1')->group(function () {
+    Route::post('sign-in', 'Api\V1\Auth\RegisterController@signIn');
+    Route::post('sign-up', 'Api\V1\Auth\RegisterController@signUp');
+});

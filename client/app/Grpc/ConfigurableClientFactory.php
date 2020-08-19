@@ -1,7 +1,7 @@
 <?php   namespace App\Grpc;
 
-use App\Grpc\Interfaces\ClientFactory;
 use Grpc\ChannelCredentials;
+use App\Grpc\Interfaces\ClientFactory;
 use Illuminate\Contracts\Config\Repository as Config;
 
 class ConfigurableClientFactory implements ClientFactory

@@ -2,9 +2,9 @@
 
 return [
     'services' => [
-        'Protobuf\\Identity\\AuthServiceClient' => [
+        'ProtocolBuffer\\Auth\\AuthServiceInterface' => [
             'host' => env('AUTH_SERVICE_HOST'),
-            'authentication' => 'tls', // insecure, tls
+            'authentication' => 'insecure', // insecure, tls
             'cert' => env('AUTH_SERVICE_CERT')
         ],
     ],
