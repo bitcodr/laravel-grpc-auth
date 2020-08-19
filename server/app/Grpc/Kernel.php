@@ -37,7 +37,7 @@ class Kernel implements KernelContract
     protected ServiceInvoker $invoker;
 
     /**
-     * Services definintion.
+     * Controllers definintion.
      * 
      * @var array
      */

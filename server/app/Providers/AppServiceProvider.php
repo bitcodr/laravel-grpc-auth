@@ -2,7 +2,7 @@
 
 use App\Grpc\Interfaces\Validator;
 use App\Grpc\LaravelValidator;
-use App\Grpc\Services\AuthService;
+use App\Grpc\Controllers\AuthController;
 use App\Repositories\AuthRepository;
 use App\Repositories\Interfaces\AuthInterface;
 use Illuminate\Support\ServiceProvider;
@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(Validator::class, LaravelValidator::class);
-        $this->app->bind(AuthServiceInterface::class, AuthService::class);
+        $this->app->bind(AuthServiceInterface::class, AuthController::class);
         $this->app->bind(AuthInterface::class, AuthRepository::class);
     }
 

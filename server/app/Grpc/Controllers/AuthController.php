@@ -1,7 +1,6 @@
-<?php namespace App\Grpc\Services;
+<?php namespace App\Grpc\Controllers;
 
 use App\Repositories\Interfaces\AuthInterface;
-use App\Model\User;
 use ProtocolBuffer\Auth\AuthServiceInterface;
 use Spiral\GRPC;
 use ProtocolBuffer\Auth;
@@ -14,7 +13,7 @@ use ProtocolBuffer\Auth\Response;
 use ProtocolBuffer\Auth\SignInRequest;
 use Throwable;
 
-class AuthService implements AuthServiceInterface
+class AuthController implements AuthServiceInterface
 {
 
     /**
@@ -71,7 +70,12 @@ class AuthService implements AuthServiceInterface
 
         $user = $this->user->Insert($data);
 
-        return $this->makeResponse($user);
+        $response = new Response();
+
+        $response->setId($user->id);
+        $response->setToken("token");
+
+        return $response;
     }
 
     /**
@@ -93,23 +97,6 @@ class AuthService implements AuthServiceInterface
 
         if (!$this->hasher->check($data['password'], $user->password)) {
             throw new InvokeException("credentials error: ", StatusCode::INVALID_ARGUMENT);
-        }
-
-        return $this->makeResponse($user);
-    }
-
-
-    /**
-     * Prepare user response.
-     *
-     * @param User|null $user
-     * @return Response
-     * @throws GRPC\Exception\InvokeException
-     */
-    protected function makeResponse(User $user = null): Response
-    {
-        if (!$user) {
-            throw new InvokeException("These credentials do not match our records.", StatusCode::INVALID_ARGUMENT);
         }
 
         $response = new Response();
