@@ -5,7 +5,7 @@ use App\Model\User;
 use ProtocolBuffer\Auth\AuthServiceInterface;
 use Spiral\GRPC;
 use ProtocolBuffer\Auth;
-use App\Grpc\Contracts\Validator;
+use App\Grpc\Interfaces\Validator;
 use Illuminate\Contracts\Hashing\Hasher;
 use Spiral\GRPC\Exception\InvokeException;
 use Spiral\GRPC\StatusCode;

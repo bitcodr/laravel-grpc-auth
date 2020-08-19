@@ -1,6 +1,7 @@
 <?php namespace App\Grpc;
 
 use Google\Protobuf\Any;
+use http\Message;
 use Illuminate\Foundation\Bootstrap\BootProviders;
 use Illuminate\Foundation\Bootstrap\HandleExceptions;
 use Illuminate\Foundation\Bootstrap\LoadConfiguration;
@@ -8,14 +9,16 @@ use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
 use Illuminate\Foundation\Bootstrap\RegisterFacades;
 use Illuminate\Foundation\Bootstrap\RegisterProviders;
 use Illuminate\Foundation\Bootstrap\SetRequestForConsole;
+use ReflectionException;
 use Spiral\RoadRunner\Worker;
 use Spiral\GRPC\Context;
 use Spiral\GRPC\StatusCode;
 use Spiral\GRPC\Exception\GRPCException;
 use Spiral\GRPC\Exception\NotFoundException;
 use App\Grpc\Interfaces\Kernel as KernelContract;
-use App\Grpc\Contracts\ServiceInvoker;
+use App\Grpc\Interfaces\ServiceInvoker;
 use Illuminate\Contracts\Foundation\Application;
+use Throwable;
 
 class Kernel implements KernelContract
 {
@@ -69,10 +72,11 @@ class Kernel implements KernelContract
 
     /**
      * Register available services.
-     * 
-     * @param   string              $interface
-     * 
+     *
+     * @param string $interface
+     *
      * @return  self
+     * @throws ReflectionException
      */
     public function registerService(string $interface): KernelContract
     {
@@ -113,7 +117,7 @@ class Kernel implements KernelContract
                 $worker->send($resp);
             } catch (GRPCException $e) {
                 $worker->error($this->packError($e));
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 $worker->error((string)$e);
             } finally {
                 if ($finalize !== null) {
@@ -155,7 +159,7 @@ class Kernel implements KernelContract
      * @return string
      *
      * @throws GRPCException
-     * @throws \Throwable
+     * @throws Throwable
      */
     protected function invoke(
         string $service,

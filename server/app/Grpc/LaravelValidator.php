@@ -1,7 +1,7 @@
 <?php   namespace App\Grpc;
 
 use Spiral\GRPC\StatusCode;
-use App\Grpc\Contracts\Validator;
+use App\Grpc\Interfaces\Validator;
 use Spiral\GRPC\Exception\ServiceException;
 use Google\Rpc\BadRequest\FieldViolation;
 use Illuminate\Contracts\Validation\Factory;

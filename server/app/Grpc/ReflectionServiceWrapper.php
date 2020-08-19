@@ -1,7 +1,7 @@
 <?php   namespace App\Grpc;
 
-use App\Grpc\Contracts\ServiceInvoker;
-use App\Grpc\Contracts\ServiceWrapper;
+use App\Grpc\Interfaces\ServiceInvoker;
+use App\Grpc\Interfaces\ServiceWrapper;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionMethod;

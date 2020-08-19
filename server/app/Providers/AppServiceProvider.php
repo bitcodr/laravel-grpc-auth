@@ -1,6 +1,6 @@
 <?php   namespace App\Providers;
 
-use App\Grpc\Contracts\Validator;
+use App\Grpc\Interfaces\Validator;
 use App\Grpc\LaravelValidator;
 use App\Grpc\Services\AuthService;
 use App\Repositories\AuthRepository;

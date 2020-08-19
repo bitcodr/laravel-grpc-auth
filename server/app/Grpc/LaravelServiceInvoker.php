@@ -1,6 +1,6 @@
 <?php   namespace App\Grpc;
 
-use App\Grpc\Contracts\ServiceInvoker;
+use App\Grpc\Interfaces\ServiceInvoker;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Spiral\GRPC\Method;
 use Spiral\GRPC\ContextInterface;
@@ -17,7 +17,7 @@ class LaravelServiceInvoker implements ServiceInvoker
      *
      * @var Application
      */
-    protected $app;
+    protected Application $app;
 
     /**
      * Create new Invoker instance
