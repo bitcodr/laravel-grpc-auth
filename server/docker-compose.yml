@@ -4,7 +4,7 @@ services:
   auth_service:
     build: .
     depends_on:
-      - database
+      - mysql
     env_file: 
       - .env
     volumes:

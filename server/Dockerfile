@@ -19,7 +19,7 @@ COPY --from=vendor /app .
 RUN bash vendor/spiral/php-grpc/build.sh build Linux linux amd64
 RUN bash vendor/spiral/php-grpc/build.sh build_protoc Linux linux amd64
 
-RUN protoc --plugin=./vendor/spiral/php-grpc/protoc-gen-php-grpc --php_out=./protocolBuffer/auth/compiled --php-grpc_out=./protocolBuffer/auth/compiled protocolBuffer/**/*.proto
+RUN protoc --plugin=/usr/bin/protoc-gen-php-grpc --php_out=./protocolBuffer/auth/compiled --php-grpc_out=./protocolBuffer/auth/compiled protocolBuffer/**/*.proto
 
 FROM php:7.4-zts-alpine
 

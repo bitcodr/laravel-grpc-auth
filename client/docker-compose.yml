@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: ./.docker/dockerfiles/app.dockerfile
+    depends_on:
+      - mysql
+
+  nginx:
+    build:
+      context: ./
+      dockerfile: ./.docker/dockerfiles/nginx.dockerfile
+    depends_on:
+      - app
+
+  mysql:
+    image: mysql:latest
+    volumes:
+      - mysql_volume:/var/lib/mysql
+
+volumes:
+  mysql_volume:
