@@ -4,14 +4,14 @@ services:
   app:
     build:
       context: ./
-      dockerfile: ./.docker/dockerfiles/app.dockerfile
+      dockerfile: docker/app.dockerfile
     depends_on:
       - mysql
 
   nginx:
     build:
       context: ./
-      dockerfile: ./.docker/dockerfiles/nginx.dockerfile
+      dockerfile: docker/nginx.dockerfile
     depends_on:
       - app
 

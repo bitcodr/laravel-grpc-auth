@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Services\Grpc\Contracts\ClientFactory;
-use App\Services\Grpc\Contracts\ErrorHandler;
-use App\Services\Grpc\GrpcUserProvider;
+use App\Grpc\Interfaces\ClientFactory;
+use App\Grpc\Interfaces\ErrorHandler;
+use App\Grpc\GrpcUserProvider;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\Passport;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;

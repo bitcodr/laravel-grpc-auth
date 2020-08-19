@@ -2,7 +2,7 @@ FROM composer:latest as vendor
 
 WORKDIR /app
 
-COPY . .
+COPY dockerfiles .
 
 RUN composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --no-suggest --optimize-autoloader
 

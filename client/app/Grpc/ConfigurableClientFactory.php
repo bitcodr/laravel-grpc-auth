@@ -1,35 +1,31 @@
-<?php
+<?php   namespace App\Grpc;
 
-namespace App\Services\Grpc;
-
-use App\Services\Grpc\Contracts\ClientFactory;
+use App\Grpc\Interfaces\ClientFactory;
 use Grpc\ChannelCredentials;
 use Illuminate\Contracts\Config\Repository as Config;
 
 class ConfigurableClientFactory implements ClientFactory
 {
+
     /**
-     * Config repository.
-     *
-     * @var     Config
+     * @var Config
      */
     protected Config $config;
 
+
     /**
-     * Create new instance.
-     *
-     * @var     Config $config
+     * ConfigurableClientFactory constructor.
+     * @param Config $config
      */
     public function __construct(Config $config)
     {
         $this->config = $config;
     }
 
+
     /**
-     * Make grpc client
-     *
      * @param string $client
-     * @return  mixed
+     * @return mixed
      */
     public function make(string $client)
     {
@@ -47,12 +43,10 @@ class ConfigurableClientFactory implements ClientFactory
         return $client;
     }
 
+
     /**
-     * Create tls creadentials
-     *
-     * @param   array   $config
-     *
-     * @return  ChannelCredentials
+     * @param array $config
+     * @return ChannelCredentials
      */
     protected function createTlsCredentials(array $config)
     {
@@ -61,12 +55,10 @@ class ConfigurableClientFactory implements ClientFactory
         return ChannelCredentials::createSsl($cert);
     }
 
+
     /**
-     * Create insecure creadentials
-     *
-     * @param   array   $config
-     *
-     * @return  ChannelCredentials
+     * @param array $config
+     * @return null
      */
     protected function createInsecureCredentials(array $config)
     {

@@ -1,14 +1,10 @@
-<?php
-
-namespace App\Services\Grpc\Contracts;
+<?php   namespace App\Grpc\Interfaces;
 
 interface ClientFactory
 {
     /**
-     * Make grpc client
-     *
      * @param string $client
-     * @return  mixed
+     * @return mixed
      */
     public function make(string $client);
 }
