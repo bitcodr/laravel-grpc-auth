@@ -1,7 +1,6 @@
-<?php   namespace App\Grpc;
+<?php   namespace App\Service\Grpc;
 
-use Grpc\ChannelCredentials;
-use App\Grpc\Interfaces\ClientFactory;
+use App\Service\Grpc\Interfaces\ClientFactory;
 use Illuminate\Contracts\Config\Repository as Config;
 
 class ConfigurableClientFactory implements ClientFactory
@@ -46,22 +45,22 @@ class ConfigurableClientFactory implements ClientFactory
 
     /**
      * @param array $config
-     * @return ChannelCredentials
+     * @return \Grpc\ChannelCredentials
      */
     protected function createTlsCredentials(array $config)
     {
         $cert = file_get_contents($config['cert']);
 
-        return ChannelCredentials::createSsl($cert);
+        return \Grpc\ChannelCredentials::createSsl($cert);
     }
 
 
     /**
      * @param array $config
-     * @return null
+     * @return \Grpc\ChannelCredentials
      */
     protected function createInsecureCredentials(array $config)
     {
-        return ChannelCredentials::createInsecure();
+        return \Grpc\ChannelCredentials::createInsecure();
     }
 }

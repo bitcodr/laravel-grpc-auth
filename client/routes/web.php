@@ -15,6 +15,6 @@ use GPBMetadata\Google\Rpc\ErrorDetails;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});

@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'api',
         'passwords' => 'users',
     ],
 
@@ -68,12 +68,12 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Model\User::class,
         ],
 
         'grpc' => [
             'driver' => 'grpc',
-            'model' => App\User::class,
+            'model' => App\Model\User::class,
         ],
 
         // 'users' => [

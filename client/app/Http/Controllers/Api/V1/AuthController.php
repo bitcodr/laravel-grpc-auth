@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Grpc\Interfaces\ErrorHandler;
-use App\Grpc\Interfaces\ClientFactory;
+use App\Service\Grpc\Interfaces\ErrorHandler;
+use App\Service\Grpc\Interfaces\ClientFactory;
 use ProtocolBuffer\Auth\SignInRequest;
 use ProtocolBuffer\Auth\SignUpRequest;
 use ProtocolBuffer\Auth\AuthServiceInterface;

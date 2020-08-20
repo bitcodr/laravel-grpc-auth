@@ -1,10 +1,10 @@
-<?php   namespace App\Grpc;
+<?php   namespace App\Service\Grpc;
 
 use Exception;
 use Google\Rpc\Status;
 use Illuminate\Support\Facades\Log;
 use GPBMetadata\Google\Rpc\ErrorDetails;
-use App\Grpc\Interfaces\ErrorHandler;
+use App\Service\Grpc\Interfaces\ErrorHandler;
 use const Grpc\STATUS_OK;
 
 class LaravelErrorHandler implements ErrorHandler

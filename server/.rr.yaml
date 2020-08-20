@@ -1,11 +1,8 @@
 grpc:
-  listen: ${GRPC_SERVER}
+  listen: "tcp://127.0.0.1:50051"
   proto: "protocolBuffer/auth/auth.proto"
-  tls:
-    key:  ${SERVER_KEY}
-    cert: ${SERVER_CERT}
   workers:
     command: "php worker.php"
     pool:
-      maxJobs: ${GRPC_WORKER_MAX_JOBS}
-      numWorkers: ${GRPC_WORKER_NUM_WORKERS}
+      maxJobs: 1
+      numWorkers: 1

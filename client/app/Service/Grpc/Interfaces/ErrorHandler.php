@@ -1,4 +1,4 @@
-<?php   namespace App\Grpc\Interfaces;
+<?php   namespace App\Service\Grpc\Interfaces;
 
 interface ErrorHandler
 {

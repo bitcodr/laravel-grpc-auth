@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Grpc\ConfigurableClientFactory;
+use App\Service\Grpc\ConfigurableClientFactory;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;

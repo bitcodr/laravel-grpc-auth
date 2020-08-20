@@ -19,9 +19,6 @@ class AuthRepository implements AuthInterface
 
         $user->save();
 
-        //TODO get inserted id
-        $user->id = 1;
-
         return $user;
     }
 

@@ -29,10 +29,17 @@ WORKDIR /app
 
 RUN docker-php-ext-install pdo_mysql bcmath
 
+RUN addgroup -S admin && adduser -S admin -G admin
+
 COPY --from=golang /app .
 
 RUN apk del .build-deps
 
+RUN chown -R admin:admin /app
+RUN chmod 755 -R /app
+RUN chmod 755 -R /app/config
+USER admin
+
 EXPOSE 3000
 
-CMD ["vendor/spiral/php-grpc/rr-grpc", "serve", "-v", "-d"]
+ENTRYPOINT ["vendor/spiral/php-grpc/rr-grpc", "serve", "-v", "-d"]

@@ -12,6 +12,7 @@ use ProtocolBuffer\Auth\SignUpRequest;
 use ProtocolBuffer\Auth\Response;
 use ProtocolBuffer\Auth\SignInRequest;
 use Throwable;
+use Spiral\GRPC\ContextInterface;
 
 class AuthController implements AuthServiceInterface
 {
@@ -52,13 +53,13 @@ class AuthController implements AuthServiceInterface
     }
 
     /**
-     * @param GRPC\ContextInterface $ctx
+     * @param ContextInterface $ctx
      *
      * @param Auth\SignUpRequest $request
      * @return Auth\Response
      * @throws Throwable
      */
-    public function SignUp(GRPC\ContextInterface $ctx, SignUpRequest $request): Response
+    public function SignUp(ContextInterface $ctx, SignUpRequest $request): Response
     {
         $data = json_decode($request->serializeToJsonString(), true);
 
@@ -73,19 +74,18 @@ class AuthController implements AuthServiceInterface
         $response = new Response();
 
         $response->setId($user->id);
-        //TODO using jwt to handle token base auth
-        $response->setToken("token");
+        $response->setToken("token"); //TODO use jwt to handle token base auth
 
         return $response;
     }
 
     /**
-     * @param GRPC\ContextInterface $ctx
+     * @param ContextInterface $ctx
      * @param SignInRequest $in
      * @return Response
      * @throws Throwable
      */
-    public function SignIn(GRPC\ContextInterface $ctx, SignInRequest $in): Response
+    public function SignIn(ContextInterface $ctx, SignInRequest $in): Response
     {
         $data = json_decode($in->serializeToJsonString(), true);
 
@@ -103,8 +103,7 @@ class AuthController implements AuthServiceInterface
         $response = new Response();
 
         $response->setId($user->id);
-        //TODO using jwt to handle token base auth
-        $response->setToken("token");
+        $response->setToken("token"); //TODO using jwt to handle token base auth
 
         return $response;
     }
